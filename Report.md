@@ -21,7 +21,15 @@ The observation space consists of 33 variables corresponding to position, rotati
 Where
 `n_episodes=300`, `max_t=1000`
 
-### DDPG Agent Hyperparameters
+NOTE: I needed to use the active_session function in order to prevent the disconection of the udacity workspace, adding inside the ddpg function the line
+
+''''with active_session(): #To prevent the desconection of workspace''''
+
+You must import this function from workspace_utils.py added at this repository.
+
+This is because the training could spent more than 14 hours.
+
+###Hyperparameters
 
 - BUFFER_SIZE (int):  int(1e6) replay buffer size
 - BATCH_SIZ (int): 1024 mini batch size
@@ -52,9 +60,6 @@ Being  ----> fc1_units (int): Number of nodes in first hidden layer
              fc2_units (int): Number of nodes in second hidden layer
 
 ## RESULTS
-
-
-![](https://github.com/manuelpinar/Reinforcement-Learning-Project2-Continuous-Control/blob/master/graphic_average.png?raw=true)
 
 ```
 Episode 1	Average Score: 0.62
@@ -115,3 +120,9 @@ Episode 54	Average Score: 30.10
 Environment solved in -46 episodes!	Average Score: 30.10
 ```
 
+![](https://github.com/manuelpinar/Reinforcement-Learning-Project2-Continuous-Control/blob/master/graphic_average.png?raw=true)
+
+### Future improvements
+
+Following the tips offered by Alessandro Restagno in the nanodegree, other improvements that we could use is BachtNorm in the data.
+Also, we could use other algorithms like Trust Region Policy Optimization (TRPO) and Truncated Natural Policy Gradient (TNPG) should achieve better performance. Other could be Proximal Policy Optimization (PPO), which has also demonstrated good performance with continuous control tasks.
